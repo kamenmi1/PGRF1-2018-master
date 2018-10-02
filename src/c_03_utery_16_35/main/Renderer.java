@@ -29,9 +29,23 @@ public class Renderer {
         },  0, FPS);
     }
 
+    public void clear() {
+        Graphics g = img.getGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0,0,800,600);
+    }
+
     public void drawPixel(int x, int y, int color) {
         // nastavit pixel do img
         img.setRGB(x, y, color);
+    }
+    public void drawLine(int x1, int y1, int x2, int y2, int color) {
+        float k = (y2-y1)/(float)(x2-x1); //abychom dostali desetinne cislo (float)
+        float q = y1 - k*x1;
 
+        for(int x = x1; x <= x2; x++){
+            int y = Math.round (k*x+q);
+            drawPixel(x, y, color);
+        }
     }
 }

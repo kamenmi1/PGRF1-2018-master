@@ -41,6 +41,14 @@ public class PixelTest {
                 renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
             }
         });
+
+        canvas.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                renderer.clear();
+                renderer.drawLine(400,300,e.getX(),e.getY(), 0xffff00);
+            }
+        });
     }
 
     public static void main(String[] args) {
