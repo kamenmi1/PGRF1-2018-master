@@ -43,18 +43,26 @@ public class Renderer {
         float k = (y2-y1)/(float)(x2-x1); //abychom dostali desetinne cislo (float)
         float q = y1 - k*x1;
 
-        if (x1>x2) {
-            int a = x1;
-            x1 = x2;
-            x2 = a;
+        // řídící osa X
+        if (Math.abs(k) <1) {
 
-            a = y1;
-            y1 = y2;
-            y2 = a;
+            if (x1>x2) {
+                int a = x1;
+                x1 = x2;
+                x2 = a;
+
+                a = y1;
+                y1 = y2;
+                y2 = a;
         }
-        for(int x = x1; x <= x2; x++){
-            int y = Math.round (k*x+q);
-            drawPixel(x, y, color);
+
+            for(int x = x1; x <= x2; x++){
+                int y = Math.round (k*x+q);
+                drawPixel(x, y, color);
+        }
+}
+        else {
+         //končit doma // řídící osa Y
         }
     }
 }
