@@ -51,9 +51,9 @@ public class Renderer {
                 x1 = x2;
                 x2 = a;
 
-                a = y1;
-                y1 = y2;
-                y2 = a;
+           //     a = y1;
+           //     y1 = y2;
+           //     y2 = a;
             }
 
             for (int x = x1; x <= x2; x++) {
@@ -63,11 +63,11 @@ public class Renderer {
         } else {
             //končit doma // řídící osa Y
             if (y1 > y2) {
-                int a = x1;
-                x1 = x2;
-                x2 = a;
+           //     int a = x1;
+           //     x1 = x2;
+           //     x2 = a;
 
-                a = y1;
+                int a = y1;
                 y1 = y2;
                 y2 = a;
             }
