@@ -2,6 +2,8 @@ package c_03_utery_16_35.main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -39,6 +41,9 @@ public class PixelTest {
             @Override
             public void mouseClicked(MouseEvent e) {
                 renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+                points.add(e.getX());
+                points.add(e.getY());
+                renderer.drawNUhelnik()
             }
         });
 
@@ -46,9 +51,23 @@ public class PixelTest {
             @Override
             public void mouseDragged(MouseEvent e) {
                 renderer.clear();
-                renderer.drawLine(400,300,e.getX(),e.getY(), 0xffff00);
+                renderer.drawlineDDA2(400, 300, e.getX(), e.getY(), 0xffff00);
             }
         });
+
+        canvas.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //na klavesu c vymmazat platno
+                System.out.println(e.getKeyCode());
+                if (e.getKeyCode() == KeyEvent.VK_C) {
+                    renderer.clear();
+                }
+
+            }
+        });
+
+        canvas.requestFocus();
     }
 
     public static void main(String[] args) {
